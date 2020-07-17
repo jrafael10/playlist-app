@@ -1,0 +1,80 @@
+
+
+/*
+
+backgorund-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/macbook.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/macbook.jpg);
+    background-size: cover; /* Resize the background image to cover the entire container
+height: 100vh;
+background-attachment: fixed;
+position: relative
+
+
+ */
+/*
+html {
+  font-size: 10px;
+  background: url(http://i.imgur.com/b9r5sEL.jpg) center bottom / cover;
+}
+*/
+
+html {
+  font-size: 10px;
+
+
+  background-image:  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(mona_trexy.PNG);
+
+height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
+}
+body,html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+
+}
+
+.keys {
+
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.key {
+  border: .4rem solid black;
+  border-radius: .5rem;
+  margin: 1rem;
+  font-size: 1.5rem;
+  padding: 1rem .5rem;
+  transition: all .07s ease;
+  width: 13rem;
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,0.4);
+  text-shadow: 0 0 .5rem black;
+}
+
+.playing {
+  transform: scale(1.1);
+  border-color: #ffc600;
+  box-shadow: 0 0 1rem #ffc600;
+}
+
+kbd {
+  display: block;
+  font-size: 4rem;
+}
+
+.sound {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  color: #ffc600;
+}

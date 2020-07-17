@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Drum Kit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+  <div class="keys">
+    <!-- -->
+    <div data-key="77" class="key">
+      <kbd>M</kbd>
+      <span class="sound">Man In The Mirror</span>
+    </div>
+    <div data-key="79" class="key">
+      <kbd>O</kbd>
+      <span class="sound">Only One</span>
+    </div>
+    <div data-key="78" class="key">
+      <kbd>N</kbd>
+      <span class="sound">Nobody</span>
+    </div>
+    <div data-key="65" class="key">
+      <kbd>A</kbd>
+      <span class="sound">At the Beginning</span>
+    </div>
+    <div style="border:none; background:none;"data-key="85" class="key">
+      <!--
+      <kbd>X</kbd>
+      <span class="sound">Unconditionally</span>-->
+    </div>
+
+
+    <div data-key="84" class="key">
+      <kbd>T</kbd>
+      <span class="sound">The Lazy Song</span>
+    </div>
+    <div data-key="82" class="key">
+      <kbd>R</kbd>
+      <span class="sound">Roar</span>
+    </div>
+    <div data-key="69" class="key">
+      <kbd>E</kbd>
+      <span class="sound">Especially For You</span>
+    </div>
+    <div data-key="88" class="key">
+      <kbd>X</kbd>
+      <span class="sound">Reset</span>
+    </div>
+
+    <div data-key="89" class="key">
+      <kbd>Y</kbd>
+      <span class="sound">You Got It All</span>
+    </div>
+
+
+
+    </br>
+
+  </div>
+
+
+
+  <audio class = "audio" data-key="77" src="mona_songs/manInTheMirror.mp3"></audio>
+  <audio class = "audio" data-key="79" src="mona_songs/only_one.mp3"></audio>
+  <audio class = "audio" data-key="78" src="mona_songs/nobody.mp3"></audio>
+  <audio class = "audio" data-key="65" src="mona_songs/atTheBeginning.mp3"></audio>
+  <audio class = "audio" data-key="84" src="mona_songs/lazy_song.mp3"></audio>
+  <audio class = "audio" data-key="82" src="mona_songs/roar.mp3"></audio>
+  <audio class = "audio" data-key="69" src="mona_songs/especiallyForYou.mp3"></audio>
+  <audio class = "audio" data-key="89" src="mona_songs/youGotItAll.mp3"></audio>
+  <!--<audio data-key="76" src="sounds/tink.wav"></audio>-->
+
+  <audio data-key="88"></audio>
+
+<script>
+
+  function removeTransition(e) {
+    if(e.propertyName !== 'transform') return;
+    e.target.classList.remove('playing');
+
+  }
+
+
+function playSound(e) {
+  //access audio by data-key using brackets
+  const audios = document.getElementsByTagName('audio');
+  const audio = document.querySelector(`audio[data-key = "${e.keyCode}"]`);
+  const key = document.querySelector(`div[data-key = "${e.keyCode}"]`);
+
+ console.log(audios.length);
+  if (!audio) return;
+  key.classList.add('playing');
+
+  if(audio.getAttribute("data-key") == 88) {
+    for(var i = 0, len = audios.length; i < len;i++){
+    if(audios[i] != e.target){
+      audios[i].currentTime = 0;audios[i].pause();
+    }
+  }};
+  if (audio.paused) {
+
+    audio.play();
+  } else {
+    audio.pause();
+  }
+
+}
+
+
+const keys = Array.from(document.querySelectorAll('.key'));
+keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+
+
+window.addEventListener('keydown', playSound);
+
+//window.addEventListener('click', playSound);
+//window.addEventListener('keydown', restartSong);
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
